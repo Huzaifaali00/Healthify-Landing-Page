@@ -37,4 +37,4 @@ No environment variables are required.
 ## Links
 
 - GitHub: `https://github.com/Huzaifaali00/Healthify-Landing-Page.git`
-- Vercel: `https://healthify.vercel.app`
+- Vercel: `https://healthify-landingpage.vercel.app/`
