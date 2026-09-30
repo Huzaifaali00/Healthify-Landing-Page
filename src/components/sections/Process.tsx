@@ -1,0 +1,5 @@
+import { Text, View } from "react-native";
+import { steps } from "../../data/content";
+import { Icon } from "../ui/Icon";
+import { SectionHeading } from "../ui/SectionHeading";
+export function Process() { return <View className="bg-[#f7f7f1]"><View className="mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8"><SectionHeading eyebrow="Our Easy Process" title="Healthy Eating in 3 Simple Steps"/><View className="flex-col gap-7 md:flex-row md:gap-4">{steps.map(([number, icon, title, text], index) => <View key={title} className="flex-1 flex-row items-center gap-4"><Text className="rounded-full bg-[#e1e8d7] px-4 py-3 font-display text-[19px] text-[#183427]">{number}</Text><View className="flex-1"><View className="flex-row items-center gap-2"><Icon name={icon} size={21}/><Text className="font-inter text-[11px] font-bold text-[#183427]">{title}</Text></View><Text className="mt-1 font-inter text-[10px] leading-4 text-[#59655c]">{text}</Text></View>{index < 2 && <View className="hidden md:flex"><Icon name="arrow-right"/></View>}</View>)}</View></View></View>; }

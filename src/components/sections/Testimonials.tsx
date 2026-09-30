@@ -1,0 +1,6 @@
+import { Text, View } from "react-native";
+import { testimonials } from "../../data/content";
+import { Icon } from "../ui/Icon";
+import { SectionHeading } from "../ui/SectionHeading";
+import { Surface } from "../ui/Surface";
+export function Testimonials() { return <View className="bg-[#fbfaf5]"><View className="mx-auto w-full max-w-[1200px] px-5 py-16 md:px-8"><SectionHeading eyebrow="Customer Stories" title="What Our Customers Say"/><View className="flex-row flex-wrap gap-4">{testimonials.map(([initials, name, quote]) => <Surface key={name} className="w-full border border-[#edf0e8] p-5 md:w-[31.8%]"><Text className="min-h-[54px] font-inter text-[12px] leading-5 text-[#536055]">“{quote}”</Text><View className="mt-5 flex-row items-center justify-between"><View className="flex-row items-center gap-3"><Text className="rounded-full bg-[#dce7d2] px-3 py-2 font-inter text-[11px] font-bold text-[#183427]">{initials}</Text><View><Text className="font-inter text-[11px] font-bold text-[#183427]">{name}</Text><Text className="font-inter text-[9px] text-[#6d786e]">Dubai, UAE</Text></View></View><View className="flex-row">{[1,2,3,4,5].map((star) => <Icon key={star} name="star" size={12} color="#E9A517"/>)}</View></View></Surface>)}</View></View></View>; }

@@ -1,98 +1,17 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform, ScrollView, View } from "react-native";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
+import { Hero } from "../components/sections/Hero";
+import { Stats } from "../components/sections/Stats";
+import { About } from "../components/sections/About";
+import { Services } from "../components/sections/Services";
+import { Advantages } from "../components/sections/Advantages";
+import { Pricing } from "../components/sections/Pricing";
+import { Process } from "../components/sections/Process";
+import { Testimonials } from "../components/sections/Testimonials";
+import { Faq } from "../components/sections/Faq";
+import { Cta } from "../components/sections/Cta";
+import { Icon } from "../components/ui/Icon";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
-
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
+const sectionStyle = Platform.OS === "web" ? ({ scrollMarginTop: 76 } as never) : undefined;
+export default function HomeScreen() { return <View className="flex-1 bg-[#fbfaf5]"><Header/><ScrollView showsVerticalScrollIndicator={false}><View nativeID="home" style={sectionStyle}><Hero/></View><Stats/><View nativeID="about" style={sectionStyle}><About/></View><View nativeID="services" style={sectionStyle}><Services/></View><View nativeID="advantages" style={sectionStyle}><Advantages/></View><View nativeID="plans" style={sectionStyle}><Pricing/></View><Process/><View nativeID="testimonials" style={sectionStyle}><Testimonials/></View><Faq/><Cta/><View nativeID="contact" style={sectionStyle}><Footer/></View></ScrollView><View className="absolute bottom-5 right-5 rounded-full bg-[#25D366] p-4 shadow-lg"><Icon name="message-circle" size={24} color="#FFFFFF"/></View></View>; }
